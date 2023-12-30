@@ -6,7 +6,7 @@
                  </div>
              </div>
          </div>
-     </section>
+     </section>    
 
      <section class="contend">
          <div class="container-fluid">

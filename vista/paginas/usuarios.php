@@ -110,8 +110,7 @@ Modal Crear usuarios
 
                          <label>rol</label>
 
-                     </div>
-
+                     </div>             
                      <div class="modal-footer">
                          <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">cerrar</button>
                          <button type="submit" class="btn btn-primary">guardar</button>
