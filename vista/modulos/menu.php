@@ -8,7 +8,7 @@
                   <img src="vista/imagenes/usuarios/foto.jpg" class="img-circle" alt="User Image">
               </div>
               <div class="pull-left info">
-                  <p>Alexander Pierce</p>
+                  <p>B.L.C.L</p>
                   <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
               </div>
           </div>
@@ -18,13 +18,13 @@
               <li class="header">Menú de Navegación</li>
 
               <li>
-                <a href="index.php?pagina=usuarios">
+                <a href="usuarios">
                     <i class="fa fa-user"> <span>Usuarios</span> </i>
                 </a>
               </li>
 
               <li>
-                <a href="index.php?pagina=roles">
+                <a href="roles">
                     <i class="fa fa-link"> <span>Roles</span> </i>
                 </a>
               </li>  
