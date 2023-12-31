@@ -29,32 +29,38 @@
                                      <tr>
                                          <th style="width:10px">Id</th>
                                          <th>Nombre</th>
-                                         <th>Usuario</th>
-                                         <th>Foto</th>
+                                         <th>Usuario</th>                                 
                                          <th>Rol</th>
+                                         <th>Foto</th>
                                          <th>Acciones</th>
                                      </tr>
                                  </thead>
 
                                  <tbody>
-                                     <tr>
-                                         <td>1</td>
-                                         <td>Hotel Portobelo</td>
-                                         <td>Portobelo</td>
-                                         <td>Administrador</td>
-                                         <td><button class="btn btn-info btn-sm">Activo</button></td>
+                                    <?php
+                                        foreach($usuarios as $key => $usr){    
+                                    ?>
+                                    <tr>
+                                         <td><?php echo ($key+1) ?></td>
+                                         <td><?php echo $usr["nombre"]?></td>
+                                         <td><?php echo $usr["usuario"]?></td>
+                                         <td><?php echo $usr["rol"]?></td>
+                                         <td><?php echo $usr["foto"]?></td>
                                          <td>
                                              <div class="btn-group">
                                                  <button class="btn btn-warning btn-sm">
-                                                     <i class="fas fa-pencil-alt text-white"></i>
+                                                    <i class="fa fa-pencil-square-o text-white"></i>
                                                  </button>
 
                                                  <button class="btn btn-danger btn-sm">
-                                                     <i class="fas fa-trash-alt text-white"></i>
+                                                     <i class="fa fa-trash text-white"></i>
                                                  </button>
                                              </div>
                                          </td>
                                      </tr>
+                                    <?php
+                                        }
+                                    ?> 
                                  </tbody>
                              </table>
                          </div>
@@ -71,9 +77,9 @@
          </div>
      </section>
 
-     <!--=====================================
-Modal Crear usuarios
-======================================-->
+        <!--=====================================
+            Modal Crear usuarios
+        ======================================-->
      <div class="modal modal-default fade" id="modal-crear-usuarios">
          <div class="modal-dialog">
              <div class="modal-content">
@@ -107,16 +113,21 @@ Modal Crear usuarios
                      </div>
 
                      <div class="form-group has-feedback">
-
                          <label>rol</label>
-
+                         <select class="form-control" name="cat_user" required>
+                            <option value="1">Administrador</option>
+                            <option value="2">Vendedor</option>
+                         </select>                      
                      </div>             
                      <div class="modal-footer">
                          <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">cerrar</button>
                          <button type="submit" class="btn btn-primary">guardar</button>
                      </div>
-
                     
+                     <?php
+                        $guardarusuarios = new ctrlUsuarios();
+                        $guardarusuarios->ctrGuardarusuarios();
+                    ?>
                  </form>
              </div>
              <!-- /.modal-content -->
