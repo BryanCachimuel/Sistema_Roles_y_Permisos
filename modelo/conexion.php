@@ -7,6 +7,8 @@ class Conexion {
 
         /* esta nomenclatura permite ingresar a la base de datos diferentes tipos de caracteres como emogis */
         $link->exec("set names utf8mb4");
+
+        return $link;
     }
 
 }
