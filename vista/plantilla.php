@@ -1,3 +1,8 @@
+<?php
+$usuarios = ctrlUsuarios::ctrlMostrarUsuarios();
+//var_dump($usuarios);
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -27,22 +32,22 @@
     <!-- Site wrapper -->
     <div class="wrapper">
 
-       <?php include "modulos/header.php"; ?>
+        <?php include "modulos/header.php"; ?>
 
         <!-- =============================================== -->
 
-      <?php include "modulos/menu.php"; ?>
+        <?php include "modulos/menu.php"; ?>
 
 
-        <!-- Content Wrapper. Contains page content -->
+        <!-- Content Wrapper. Contains page content-->
         <div class="content-wrapper">
 
             <?php
-                if(isset($_GET["pagina"])){
-                    if($_GET["pagina"] == "usuarios" || $_GET["pagina"] == "roles")  {
-                        include "paginas/".$_GET["pagina"].".php";
-                    }
+            if (isset($_GET["pagina"])) {
+                if ($_GET["pagina"] == "usuarios" || $_GET["pagina"] == "roles") {
+                    include "paginas/" . $_GET["pagina"] . ".php";
                 }
+            }
             ?>
 
         </div>
