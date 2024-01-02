@@ -57,6 +57,20 @@ class ctrlUsuarios
 
                         return;
                 }
+
+                /* se encripa la contraseña */
+                $encriptarPassword = crypt($_POST["pass_user"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
+
+                $datos =array("nom_usuario"=>$_POST["nom_usuarios"],
+                              "nom_user"=>$_POST["nom_user"],
+                              "pass_user"=> $encriptarPassword,
+                              "rol_user"=> $_POST["rol_user"],
+                              "foto"=>$ruta);
+
+                    //echo "</pre>";  print_r($datos); echo "</pre>";
+                $tabla = "usuarios";
+                $respuesta = mdlUsuarios::mdlguardarUsuarios($tabla,$datos);
+
             }
         }
     }
