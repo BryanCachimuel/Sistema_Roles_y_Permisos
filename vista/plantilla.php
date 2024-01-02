@@ -23,6 +23,8 @@ $usuarios = ctrlUsuarios::ctrlMostrarUsuarios();
     <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="vista/recursos/dist/css/skins/_all-skins.min.css">
+    <!-- libreria de sweetalert2 -->
+    <script src="vista/js/sweetalert2.all.js"></script>
 
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
