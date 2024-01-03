@@ -266,6 +266,10 @@ $usuarios = ctrlUsuarios::ctrlMostrarUsuarios();
     <script src="vista/recursos/dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="vista/recursos/dist/js/demo.js"></script>
+    
+    <!-- control de las imagenes que se suben por el formulario -->
+    <script src="vista/js/usuarios.js"></script>
+
     <script>
         $(document).ready(function() {
             $('.sidebar-menu').tree()
