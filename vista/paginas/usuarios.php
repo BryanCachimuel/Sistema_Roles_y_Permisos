@@ -38,14 +38,18 @@
 
                                  <tbody>
                                     <?php
-                                        foreach($usuarios as $key => $usr){    
+                                        foreach($usuarios as $key => $usr){ 
+                                            $item = "id_roles";  
+                                            $valor = $usr["rol"];
+                                            
+                                            $roles = ctrlRoles::ctrMostrarRoles($item, $valor);
                                     ?>
                                     <tr>
                                          <td><?php echo ($key+1) ?></td>
                                          <td><?php echo $usr["nombre"]?></td>
                                          <td><?php echo $usr["usuario"]?></td>
-                                         <td><?php echo $usr["rol"]?></td>
-                                         <td><?php echo $usr["foto"]?></td>
+                                         <td><?php echo $roles["nombre_rol"]; ?></td>
+                                         <td><img src="<?php echo $usr["foto"]?>" width="70" height="70"></td>
                                          <td>
                                              <div class="btn-group">
                                                  <button class="btn btn-warning btn-sm">
@@ -86,7 +90,7 @@
                  <div class="modal-header">
                      <h4 class="alert alert-success alert-dismissible ">Agregar Nuevo Usuario</h4>
                  </div>
-                 <form method="post" enctype="multipart/form-data">
+                 <form method="post" enctype="multipart/form-data" autocomplete="off">
 
                      <div class="form-group has-feedback" bis_skin_checked="1">
                          <input type="text" class="form-control" name="nom_usuarios" placeholder="nombre">
@@ -114,7 +118,7 @@
 
                      <div class="form-group has-feedback">
                          <label>rol</label>
-                         <select class="form-control" name="cat_user" required>
+                         <select class="form-control" name="rol_user" required>
                             <option value="1">Administrador</option>
                             <option value="2">Vendedor</option>
                          </select>                      
