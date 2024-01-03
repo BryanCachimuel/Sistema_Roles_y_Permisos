@@ -10,8 +10,10 @@
 /* llamando al controlador */
 include "controlador/plantilla.controlador.php";
 include "controlador/usuario.controlador.php";
+include "controlador/roles.controlador.php";
 
 include "modelo/usuario.modelo.php";
+include "modelo/roles.modelo.php";
 
 /* utilizamos POO para poder llamar a la clase creada en el archivo plantilla.controlador.php*/
 $plantilla = new ControladorPlantilla();
