@@ -4,6 +4,14 @@ require_once "conexion.php";
 
 class mdlUsuarios {
 
+    static function mdlMostrarUsuarios1($tabla, $item, $valor){
+        $stmt= Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item =:$item");
+        $stmt->bindParam(":".$item, $valor, PDO::PARAM_STR);
+		$stmt->execute();
+
+		return $stmt -> fetch();
+    }
+
     static public function mdlMostrarUsuarios($tabla){
         
         $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla");
