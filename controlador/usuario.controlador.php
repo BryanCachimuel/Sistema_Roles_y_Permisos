@@ -11,6 +11,14 @@ class ctrlUsuarios
         return $respuesta;
     }
 
+    static public function ctrlMostrarUsuarios1($item, $valor)
+    {
+        $tabla = "usuarios";
+        $respuesta = mdlUsuarios::mdlMostrarUsuarios1($tabla, $item, $valor);
+
+        return $respuesta;
+    }
+
     static public function ctrGuardarusuarios()
     {
         if (isset($_POST["nom_usuarios"])) {
@@ -95,4 +103,5 @@ class ctrlUsuarios
             }
         }
     }
+    
 }
