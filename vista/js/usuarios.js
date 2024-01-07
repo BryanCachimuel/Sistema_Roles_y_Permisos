@@ -69,3 +69,26 @@ if (imagen["type"] != "image/jpeg" && imagen["type"] != "image/png") {
     });
   }
 });
+
+/* editar usuario */
+$(".tablaUsuarios").on("click",".btnEditarUsuario", function(){
+  var idUsuario = $(this).attr("idUsuario");
+  var datos = new FormData();
+  datos.append("idUsuario", idUsuario);
+
+  $.ajax({
+    url:"ajax/usuarios.ajax.php",
+    method: "POST",
+    data: datos,
+    cache: false,
+    contentType: false,
+    proccessData: false,
+    dataType: "json",
+    success: function(respuesta){
+      $("#nom_usuariosE").val(respuesta["nombre"]);
+      $("#nom_userE").val(respuesta["usuario"]);
+      $("#pass_userE").val(respuesta["password"]);
+      $(".previsualizarImgusuarios").attr("src", respuesta("foto"));
+    }
+  });
+})
