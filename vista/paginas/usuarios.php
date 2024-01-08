@@ -185,12 +185,12 @@
                          <select class="form-control" name="rol_userE" required>
 
                              <?php
-                                /*$roles = ctrRoles::ctrMostrarRoles2();
-                                foreach ($roles as $rol) {*/
+                                $roles = ctrlRoles::ctrMostrarRoles2();
+                                foreach ($roles as $rol) {
                             ?>
                                  <option value="<?php echo $rol["id_roles"] ?>"><?php echo $rol["nom_rol"] ?></option>
                             <?php
-                                /*}*/
+                                }
                             ?>
                          </select>
                      </div>
@@ -201,8 +201,8 @@
                      </div>
 
                      <?php
-                        /*$editarusuarios = new ctrUsuarios();
-                        $editarusuarios->ctrEditarusuarios();*/
+                        $editarusuarios = new ctrlUsuarios();
+                        $editarusuarios->ctrEditarusuarios();
                     ?>
                  </form>
              </div>
