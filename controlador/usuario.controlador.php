@@ -103,5 +103,72 @@ class ctrlUsuarios
             }
         }
     }
+
+    static public function ctrEditarusuarios(){
+        if(isset($_POST["idPerfilE"])){
+            if(isset($_FILES["subirImgUsuarios"]["tmp_name"]) && !empty($_FILES["subirImgUsuarios"]["tmp_name"])){
+                list($ancho, $alto) = getimagesize($_FILES["subirImgUsuarios"]["tmp_name"]);
+                $nuevoAncho = 480;
+                $nuevoAlto = 382;
+
+                /* creamos el directorio donde vamos a guardar la foto del usuario */
+                $directorio = "vista/images/usuarios";
+
+                /* primer se pregunta si existe otra imagen en la base de datos */
+                if(isset($_POST["fotoActualE"])){
+                    unlink($_POST["fotoActualE"]);
+                }
+
+                /* de acuerdo al tipo de imagen se aplica las funciones por defecto de php */
+                if($_FILES["subirImgusuariosE"]["type"] == "image/jpeg"){
+                    $aleatorio = mt_rand(100,999);
+                    $rutas = $directorio."/".$aleatorio.".jpg";
+                    $origen = imagecreatefromjpeg($_FILES["subirImgusuariosE"]["tmp_name"]);
+                    $destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);	
+                    imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
+                    imagejpeg($destino, $rutas);	
+                }
+                else if($_FILES["subirImgusuariosE"]["type"] == "image/png"){
+                    $aleatorio = mt_rand(100,999);
+                    $rutas = $directorio."/".$aleatorio.".png";
+                    $origen = imagecreatefrompng($_FILES["subirImgusuariosE"]["tmp_name"]);						
+                    $destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
+                    imagealphablending($destino, FALSE);
+                    imagesavealpha($destino, TRUE);
+                    imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
+                    imagepng($destino, $rutas);
+                }
+                else{
+                    echo'<script>
+							swal({
+									type:"error",
+								  	title: "¡CORREGIR!",
+								  	text: "¡No se permiten formatos diferentes a JPG y/o PNG!",
+								  	showConfirmButton: true,
+									confirmButtonText: "Cerrar"
+								  
+							}).then(function(result){
+
+									if(result.value){   
+									    history.back();
+									  } 
+							});
+						 </script>';
+						 return;
+                }
+
+                if($rutas != ""){
+                    $r = $rutas;
+                }else{
+                    $r = $_POST["fotoActualE"];
+                }
+                if($_POST["pass_userE"] != ""){
+                    $password = crypt($_POST["pass_userE"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$'); 
+                }else{
+                    $password = $_POST["pass_userActualE"];
+                }
+            }
+        }
+    }
     
 }
