@@ -85,10 +85,13 @@ $(".tablaUsuarios").on("click",".btnEditarUsuario", function(){
     proccessData: false,
     dataType: "json",
     success: function(respuesta){
+      $("#idPerfilE").val(respuesta["id"]);
       $("#nom_usuariosE").val(respuesta["nombre"]);
       $("#nom_userE").val(respuesta["usuario"]);
       $("#pass_userE").val(respuesta["password"]);
       $(".previsualizarImgusuarios").attr("src", respuesta("foto"));
+      $("#fotoActualE").val(respuesta["foto"]);
+      $("#pass_userActualE").val(respuesta["password"]);
     }
   });
 })
