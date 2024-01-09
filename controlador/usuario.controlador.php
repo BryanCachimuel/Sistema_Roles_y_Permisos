@@ -203,4 +203,15 @@ class ctrlUsuarios
             }
         }
     }
+
+    static public function  ctrEliminarUsuarios($id ,$rutafoto){
+
+		unlink("../".$rutafoto);		
+		$tabla = "usuarios";
+		$respuesta = mdlUsuarios::mdlEliminarUsuarios($tabla, $id);
+
+		return $respuesta;
+
+}
+
 }
