@@ -104,9 +104,10 @@ class ctrlUsuarios
         }
     }
 
-    static public function ctrEditarusuarios(){
-        if(isset($_POST["idPerfilE"])){
-            if(isset($_FILES["subirImgUsuarios"]["tmp_name"]) && !empty($_FILES["subirImgUsuarios"]["tmp_name"])){
+    static public function ctrEditarusuarios()
+    {
+        if (isset($_POST["idPerfilE"])) {
+            if (isset($_FILES["subirImgUsuarios"]["tmp_name"]) && !empty($_FILES["subirImgUsuarios"]["tmp_name"])) {
                 list($ancho, $alto) = getimagesize($_FILES["subirImgUsuarios"]["tmp_name"]);
                 $nuevoAncho = 480;
                 $nuevoAlto = 382;
@@ -115,31 +116,29 @@ class ctrlUsuarios
                 $directorio = "vista/images/usuarios";
 
                 /* primer se pregunta si existe otra imagen en la base de datos */
-                if(isset($_POST["fotoActualE"])){
+                if (isset($_POST["fotoActualE"])) {
                     unlink($_POST["fotoActualE"]);
                 }
 
                 /* de acuerdo al tipo de imagen se aplica las funciones por defecto de php */
-                if($_FILES["subirImgusuariosE"]["type"] == "image/jpeg"){
-                    $aleatorio = mt_rand(100,999);
-                    $rutas = $directorio."/".$aleatorio.".jpg";
+                if ($_FILES["subirImgusuariosE"]["type"] == "image/jpeg") {
+                    $aleatorio = mt_rand(100, 999);
+                    $rutas = $directorio . "/" . $aleatorio . ".jpg";
                     $origen = imagecreatefromjpeg($_FILES["subirImgusuariosE"]["tmp_name"]);
-                    $destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);	
+                    $destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
                     imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
-                    imagejpeg($destino, $rutas);	
-                }
-                else if($_FILES["subirImgusuariosE"]["type"] == "image/png"){
-                    $aleatorio = mt_rand(100,999);
-                    $rutas = $directorio."/".$aleatorio.".png";
-                    $origen = imagecreatefrompng($_FILES["subirImgusuariosE"]["tmp_name"]);						
+                    imagejpeg($destino, $rutas);
+                } else if ($_FILES["subirImgusuariosE"]["type"] == "image/png") {
+                    $aleatorio = mt_rand(100, 999);
+                    $rutas = $directorio . "/" . $aleatorio . ".png";
+                    $origen = imagecreatefrompng($_FILES["subirImgusuariosE"]["tmp_name"]);
                     $destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
                     imagealphablending($destino, FALSE);
                     imagesavealpha($destino, TRUE);
                     imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
                     imagepng($destino, $rutas);
-                }
-                else{
-                    echo'<script>
+                } else {
+                    echo '<script>
 							swal({
 									type:"error",
 								  	title: "¡CORREGIR!",
@@ -154,21 +153,54 @@ class ctrlUsuarios
 									  } 
 							});
 						 </script>';
-						 return;
+                    return;
                 }
 
-                if($rutas != ""){
+                if ($rutas != "") {
                     $r = $rutas;
-                }else{
+                } else {
                     $r = $_POST["fotoActualE"];
                 }
-                if($_POST["pass_userE"] != ""){
-                    $password = crypt($_POST["pass_userE"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$'); 
-                }else{
+                if ($_POST["pass_userE"] != "") {
+                    $password = crypt($_POST["pass_userE"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
+                } else {
                     $password = $_POST["pass_userActualE"];
+                }
+
+                $datos = array(
+                    "idE" => $_POST["idPerfilE"],
+                    "nom_usuarioE" => $_POST["nom_usuarioE"],
+                    "nom_userE" => $_POST["nom_userE"],
+                    "passE" => $password,
+                    "rol_userE" => $_POST["rol_userE"],
+                    "img" => $r
+                );
+
+                $tabla = "usuarios";
+                $respuesta = mdlUsuarios::mdlEditarUsuarios($tabla, $datos);
+
+                if ($respuesta == "ok") {
+
+                    echo '<script>
+                            swal({
+                                    type:"success",
+                                    title: "¡CORRECTO!",
+                                    text: "El usuario ha sido editado correctamente",
+                                    showConfirmButton: true,
+                                    confirmButtonText: "Cerrar"
+                                
+                            }).then(function(result){
+
+                                    if(result.value){   
+                                        history.back();
+                                    } 
+                            });
+                            </script>';
+                } else {
+
+                    echo "<div class='alert alert-danger mt-3 small'>editada fallida</div>";
                 }
             }
         }
     }
-    
 }
