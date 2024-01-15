@@ -1,27 +1,29 @@
-<?php
+<?php 
 
-require_once "../controlador/usuario.controlador.php";
-require_once "../modelo/usuario.modelo.php";
+require_once "../controlador/usuarios.controlador.php";
+require_once "../modelo/usuarios.modelo.php";
 
-class AjaxUsuarios {
+class AjaxUsuarios{
 
     public $idUsuario;
 
     public function ajaxEditarUsuarios(){
-        $item = "usuarios";
+        $item = "id";
         $valor = $this->idUsuario;
+        $respuesta = ctrUsuarios::ctrMostrarUsuarios1($item,$valor);
 
-        $respuesta = ctrlUsuarios::ctrlMostrarUsuarios();
-        return $respuesta;
+        echo json_encode($respuesta);
     }
-
 }
 
-/* proceso para editar usuarios */
+//editar usuario
+
 if(isset($_POST["idUsuario"])){
-    $editar = new AjaxUsuarios();
-    $editar->idUsuario = $_POST["idUsuario"];
-    $editar->ajaxEditarUsuarios();
+
+$editar = new AjaxUsuarios();
+$editar->idUsuario = $_POST["idUsuario"];
+$editar->ajaxEditarUsuarios();
+
 }
 
 ?>
