@@ -32,38 +32,49 @@
                                     <div class="auth-content my-auto">
                                         <div class="text-center">
                                             <h5 class="mb-0">Registrar Cuenta</h5>
-                                            <p class="text-muted mt-2">Registre sus Datos en el Portal</p>
                                         </div>
-                                        <form class="needs-validation custom-form mt-4 pt-2" novalidate="" action="index.html">
+
+                                        <form id="mnt_form" class="needs-validation custom-form mt-4 pt-2" novalidate="" action="index.html">
+
                                             <div class="mb-3">
-                                                <label for="useremail" class="form-label">Email</label>
-                                                <input type="email" class="form-control" id="useremail" placeholder="Enter email" required="">  
+                                                <label for="usu_nomape" class="form-label">Nombres y Apellidos</label>
+                                                <input type="text" class="form-control" id="usu_nomape" name="usu_nomape" placeholder="Ingrese sus Nombres y Apellidos" required="">
                                                 <div class="invalid-feedback">
-                                                    Please Enter Email
+                                                   Ingrese sus Nombres y Apellidos
+                                                </div>  
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="usu_correo" class="form-label">Correo Electrónico</label>
+                                                <input type="email" class="form-control" id="usu_correo" name="usu_correo" placeholder="Ingrese Correo Electrónico" required="">  
+                                                <div class="invalid-feedback">
+                                                    Ingrese Correo Electrónico
                                                 </div>      
                                             </div>
                     
                                             <div class="mb-3">
-                                                <label for="username" class="form-label">Username</label>
-                                                <input type="text" class="form-control" id="username" placeholder="Enter username" required="">
+                                                <label for="usu_pass" class="form-label">Contraseña</label>
+                                                <input type="password" class="form-control" id="usu_pass" name="usu_pass" placeholder="Ingrese Contraseña" required="">
                                                 <div class="invalid-feedback">
-                                                    Please Enter Username
-                                                </div>  
-                                            </div>
-                    
-                                            <div class="mb-3">
-                                                <label for="userpassword" class="form-label">Password</label>
-                                                <input type="password" class="form-control" id="userpassword" placeholder="Enter password" required="">
-                                                <div class="invalid-feedback">
-                                                    Please Enter Password
+                                                    Ingresar Contraseña
                                                 </div>       
                                             </div>
+
+                                            <div class="mb-3">
+                                                <label for="usu_pass_confirmar" class="form-label">Confirmar Contraseña</label>
+                                                <input type="password" class="form-control" id="usu_pass_confirmar" name="usu_pass_confirmar" placeholder="Confirmar Contraseña" required="">
+                                                <div class="invalid-feedback">
+                                                    Confirmar Contraseña
+                                                </div>       
+                                            </div>
+
                                             <div class="mb-4">
                                                 <p class="mb-0"> Al registrarse acepta los <a href="#" class="text-primary"><strong> Terminos y Condiciones</strong></a></p>
                                             </div>
                                             <div class="mb-3">
-                                                <button class="btn btn-primary w-100 waves-effect waves-light" type="submit">Register</button>
+                                                <button class="btn btn-primary w-100 waves-effect waves-light" type="submit">Registrarse</button>
                                             </div>
+
                                         </form>
 
                                         <!--<div class="mt-4 pt-2 text-center">
@@ -90,12 +101,16 @@
                                             </ul>
                                         </div>-->
 
-                                        <div class="mt-5 text-center">
-                                            <p class="text-muted mb-0">Already have an account ? <a href="auth-login.html" class="text-primary fw-semibold"> Login </a> </p>
+                                        <div class="mt-4 text-center">
+                                            <p class="text-muted mb-0">Ya tiene una cuenta ? <a href="../../index.php" class="text-primary fw-semibold"> Acceder </a> </p>
                                         </div>
                                     </div>
-                                    <div class="mt-4 mt-md-5 text-center">
-                                        <p class="mb-0">© <script>document.write(new Date().getFullYear())</script> Minia   . Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesbrand</p>
+                                    <div class="mt-1 mt-md-5 text-center">
+                                        <p class="mb-0">© 
+                                            <script>
+                                                document.write(new Date().getFullYear())
+                                            </script> Rixler Corp
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -126,84 +141,53 @@
                                             <div class="carousel-indicators carousel-indicators-rounded justify-content-start ms-0 mb-0">
                                                 <button type="button" data-bs-target="#reviewcarouselIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                                                 <button type="button" data-bs-target="#reviewcarouselIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                                                <button type="button" data-bs-target="#reviewcarouselIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
                                             </div>
                                             <!-- end carouselIndicators -->
                                             <div class="carousel-inner">
-                                                <div class="carousel-item active">
-                                                    <div class="testi-contain text-white">
-                                                        <i class="bx bxs-quote-alt-left text-success display-6"></i>
+                                            <div class="carousel-item active">
+                                                <div class="testi-contain text-white">
+                                                    <i class="bx bxs-quote-alt-left text-success display-6"></i>
 
-                                                        <h4 class="mt-4 fw-medium lh-base text-white">“I feel confident
-                                                            imposing change
-                                                            on myself. It's a lot more progressing fun than looking back.
-                                                            That's why
-                                                            I ultricies enim
-                                                            at malesuada nibh diam on tortor neaded to throw curve balls.”
-                                                        </h4>
-                                                        <div class="mt-4 pt-3 pb-5">
-                                                            <div class="d-flex align-items-start">
-                                                                <div class="flex-shrink-0">
-                                                                    <img src="../../assets/picture/avatar-1.jpg" class="avatar-md img-fluid rounded-circle" alt="...">
-                                                                </div>
-                                                                <div class="flex-grow-1 ms-3 mb-4">
-                                                                    <h5 class="font-size-18 text-white">Richard Drews
-                                                                    </h5>
-                                                                    <p class="mb-0 text-white-50">Web Designer</p>
-                                                                </div>
+                                                    <h4 class="mt-4 fw-medium lh-base text-white">“Mesa de partes
+                                                        construida para
+                                                        dar un mejor servicio a los usuarios que se registren dentro
+                                                        de la plataforma.”
+                                                    </h4>
+                                                    <div class="mt-4 pt-3 pb-5">
+                                                        <div class="d-flex align-items-start">
+                                                            <div class="flex-shrink-0">
+                                                                <img src="../../assets/picture/avatar-1-1.jpg" class="avatar-md img-fluid rounded-circle" alt="...">
                                                             </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="carousel-item">
-                                                    <div class="testi-contain text-white">
-                                                        <i class="bx bxs-quote-alt-left text-success display-6"></i>
-
-                                                        <h4 class="mt-4 fw-medium lh-base text-white">“Our task must be to
-                                                            free ourselves by widening our circle of compassion to embrace
-                                                            all living
-                                                            creatures and
-                                                            the whole of quis consectetur nunc sit amet semper justo. nature
-                                                            and its beauty.”</h4>
-                                                        <div class="mt-4 pt-3 pb-5">
-                                                            <div class="d-flex align-items-start">
-                                                                <div class="flex-shrink-0">
-                                                                    <img src="../../assets/picture/avatar-2.jpg" class="avatar-md img-fluid rounded-circle" alt="...">
-                                                                </div>
-                                                                <div class="flex-grow-1 ms-3 mb-4">
-                                                                    <h5 class="font-size-18 text-white">Rosanna French
-                                                                    </h5>
-                                                                    <p class="mb-0 text-white-50">Web Developer</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="carousel-item">
-                                                    <div class="testi-contain text-white">
-                                                        <i class="bx bxs-quote-alt-left text-success display-6"></i>
-
-                                                        <h4 class="mt-4 fw-medium lh-base text-white">“I've learned that
-                                                            people will forget what you said, people will forget what you
-                                                            did,
-                                                            but people will never forget
-                                                            how donec in efficitur lectus, nec lobortis metus you made them
-                                                            feel.”</h4>
-                                                        <div class="mt-4 pt-3 pb-5">
-                                                            <div class="d-flex align-items-start">
-                                                                <img src="../../assets/picture/avatar-3.jpg" class="avatar-md img-fluid rounded-circle" alt="...">
-                                                                <div class="flex-1 ms-3 mb-4">
-                                                                    <h5 class="font-size-18 text-white">Ilse R. Eaton</h5>
-                                                                    <p class="mb-0 text-white-50">Manager
-                                                                    </p>
-                                                                </div>
+                                                            <div class="flex-grow-1 ms-3 mb-4">
+                                                                <h5 class="font-size-18 text-white">Richard Drews</h5>                                                               
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
+
+                                            <div class="carousel-item">
+                                                <div class="testi-contain text-white">
+                                                    <i class="bx bxs-quote-alt-left text-success display-6"></i>
+
+                                                    <h4 class="mt-4 fw-medium lh-base text-white">“Mesa de partes
+                                                        contiene contenido necesario para los usuarios y les 
+                                                        servira para muchas cosas
+                                                        dentro de su área de vida social.”</h4>
+                                                    <div class="mt-4 pt-3 pb-5">
+                                                        <div class="d-flex align-items-start">
+                                                            <div class="flex-shrink-0">
+                                                                <img src="../../assets/picture/avatar-2-1.jpg" class="avatar-md img-fluid rounded-circle" alt="...">
+                                                            </div>
+                                                            <div class="flex-grow-1 ms-3 mb-4">
+                                                                <h5 class="font-size-18 text-white">Roxana Díaz
+                                                                </h5>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                             <!-- end carousel-inner -->
                                         </div>
                                         <!-- end review carousel -->
@@ -233,6 +217,8 @@
         <!-- validation init -->
         <script src="../../assets/js/validation.init.js"></script>
 
+        <!-- llamando al archivo registro.js -->
+        <script type="text/javascript" src="registro.js"></script>
     </body>
 
 </html>
