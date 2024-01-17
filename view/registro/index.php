@@ -38,34 +38,26 @@
 
                                             <div class="mb-3">
                                                 <label for="usu_nomape" class="form-label">Nombres y Apellidos</label>
-                                                <input type="text" class="form-control" id="usu_nomape" name="usu_nomape" placeholder="Ingrese sus Nombres y Apellidos" required="">
-                                                <div class="invalid-feedback">
-                                                   Ingrese sus Nombres y Apellidos
-                                                </div>  
+                                                <input type="text" class="form-control" id="usu_nomape" name="usu_nomape" placeholder="Ingrese sus Nombres y Apellidos" required=""> 
+                                                <div class="validation-error text-danger"></div> 
                                             </div>
 
                                             <div class="mb-3">
                                                 <label for="usu_correo" class="form-label">Correo Electrónico</label>
-                                                <input type="email" class="form-control" id="usu_correo" name="usu_correo" placeholder="Ingrese Correo Electrónico" required="">  
-                                                <div class="invalid-feedback">
-                                                    Ingrese Correo Electrónico
-                                                </div>      
+                                                <input type="email" class="form-control" id="usu_correo" name="usu_correo" placeholder="Ingrese Correo Electrónico" required="">   
+                                                <div class="validation-error text-danger"></div> 
                                             </div>
                     
                                             <div class="mb-3">
                                                 <label for="usu_pass" class="form-label">Contraseña</label>
-                                                <input type="password" class="form-control" id="usu_pass" name="usu_pass" placeholder="Ingrese Contraseña" required="">
-                                                <div class="invalid-feedback">
-                                                    Ingresar Contraseña
-                                                </div>       
+                                                <input type="password" class="form-control" id="usu_pass" name="usu_pass" placeholder="Ingrese Contraseña" required="">     
+                                                <div class="validation-error text-danger"></div> 
                                             </div>
 
                                             <div class="mb-3">
                                                 <label for="usu_pass_confirmar" class="form-label">Confirmar Contraseña</label>
-                                                <input type="password" class="form-control" id="usu_pass_confirmar" name="usu_pass_confirmar" placeholder="Confirmar Contraseña" required="">
-                                                <div class="invalid-feedback">
-                                                    Confirmar Contraseña
-                                                </div>       
+                                                <input type="password" class="form-control" id="usu_pass_confirmar" name="usu_pass_confirmar" placeholder="Confirmar Contraseña" required="">      
+                                                <div class="validation-error text-danger"></div> 
                                             </div>
 
                                             <div class="mb-4">
@@ -215,7 +207,10 @@
         <script src="../../assets/js/pace.min.js"></script>
 
         <!-- validation init -->
-        <script src="../../assets/js/validation.init.js"></script>
+        <!--<script src="../../assets/js/validation.init.js"></script>-->
+
+         <!-- validator JS -->
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/validator/13.6.0/validator.min.js"></script>
 
         <!-- llamando al archivo registro.js -->
         <script type="text/javascript" src="registro.js"></script>
