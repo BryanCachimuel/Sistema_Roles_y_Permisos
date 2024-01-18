@@ -16,8 +16,19 @@
             $correo = $_POST["usu_correo"];
             $contrasenia = $_POST["usu_pass"];
 
-            /*TODO: llamada a la función registrar_usuario y a sus respectivos parámetros los cuales se obtienen del formulario */
-            $usuario->registrar_usuario($nombre,$correo,$contrasenia);
+            $datos = $usuario->get_usuario_correo($correo);
+
+            /*TODO: validando que el correo que se ingresa no exista en la base de datos para registrarlo */
+            if(is_array($datos) == true && count($datos) == 0){
+                 
+                /*TODO: llamada a la función registrar_usuario y a sus respectivos parámetros los cuales se obtienen del formulario */
+                $usuario->registrar_usuario($nombre,$correo,$contrasenia);
+                echo "1";
+            }
+            else{
+                echo "0";
+            }
+           
             break;
 
     }
