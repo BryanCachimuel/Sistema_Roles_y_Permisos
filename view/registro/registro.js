@@ -16,7 +16,7 @@ function init(){
 
 function isFormValid(){
     /*TODO: Usa Validator.js para validar cada campo del formulario */
-    return validateEmail(); 
+    return validateEmail() && validateText("usu_nomape") && validatePassword() && validatePasswordMatch(); 
 }
 
 function validateEmail(){
@@ -26,6 +26,34 @@ function validateEmail(){
 
     /*TODO: Muestra el mensaje de error si la validación no es exitosa */
     displayErrorMessage("#usu_correo",isValid,"Ingrese Correo Electrónico");
+    return isValid;
+}
+
+function validateText(fieldId){
+    var value = $("#"+fieldId).val();
+    var isValid = validator.isLength(value,{min:1});
+
+    /*TODO: Muestra el mensaje de error si la validación no es exitosa */
+    displayErrorMessage("#" + fieldId,isValid,"Este campo es obligatorio");
+
+    return isValid;
+}
+
+function validatePassword(){
+    var password = $("#usu_pass").val();
+    var isValid = validator.isLength(password,{min:8}); /*TODO: la contraseña debe tener como minimo 8 caracteres */
+    displayErrorMessage("#usu_pass",isValid,"La contraseña debe tener al menos 8 caracteres");
+
+    return isValid;
+}
+
+
+function validatePasswordMatch(){
+    var password = $("#usu_pass").val();
+    var confirmpassword = $("#usu_pass_confirmar").val();
+    var isValid = validator.equals(password,confirmpassword); /*TODO: comparación para ver que las contraseñas sean iguales */ 
+    displayErrorMessage("#usu_pass_confirmar",isValid,"Las contraseñas no coinciden");
+
     return isValid;
 }
 
@@ -40,11 +68,12 @@ function displayErrorMessage(fieldSelector, isValid, message){
 function displayValidationMessages(){
     /*TODO: Muestra mensajes de error cerca de los campos del formulario */
     validateEmail();
+    validateText("usu_nomape");
+    validatePassword();
+    validatePasswordMatch();
 }
 
-function registrar(e){
-    e.preventDefault();
-
+function registrar(){
     /*TODO: dentro del FormData se declara como parámetro el nombre del id dado al formulario y le decimos que nos traiga toda su información mediante [0]  esta expresión*/
     let formData = new FormData($("#mnt_form")[0]);
     $.ajax({
