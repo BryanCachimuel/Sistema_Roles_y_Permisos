@@ -3,8 +3,14 @@
     require_once("../config/conexion.php");
     require_once("../models/Usuario.php");
 
+    /*TODO: llamado al modelo de Email.php */
+    require_once("../models/Email.php");
+
     /*TODO: instancia de clase Usuario que se encuentra en la ruta models/Usuario.php  */
     $usuario = new Usuario();
+
+    /*TODO: instancia de la clase Email */
+    $email = new Email();
 
     /*TODO: Utiliza una estructura switch para determinar la operación a realizar segun el valor de $_GET["op"] */
     switch($_GET["op"]){
@@ -23,6 +29,10 @@
                  
                 /*TODO: llamada a la función registrar_usuario y a sus respectivos parámetros los cuales se obtienen del formulario */
                 $usuario->registrar_usuario($nombre,$correo,$contrasenia);
+
+                /*TODO: para enviar la confirmación por correo electrónico */
+                $email->registrar(1);
+
                 echo "1";
             }
             else{
