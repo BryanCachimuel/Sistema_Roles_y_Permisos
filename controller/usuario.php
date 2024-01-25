@@ -28,10 +28,10 @@
             if(is_array($datos) == true && count($datos) == 0){
                  
                 /*TODO: llamada a la función registrar_usuario y a sus respectivos parámetros los cuales se obtienen del formulario */
-                $usuario->registrar_usuario($nombre,$correo,$contrasenia);
+                $datos1 = $usuario->registrar_usuario($nombre,$correo,$contrasenia);
 
                 /*TODO: para enviar la confirmación por correo electrónico */
-                $email->registrar(1);
+                $email->registrar($datos1[0]["usu_id"]);
 
                 echo "1";
             }
