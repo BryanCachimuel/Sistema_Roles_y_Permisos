@@ -27,6 +27,12 @@
 
             /*TODO: Ejecutar la consulta SQL */
             $sql->execute();
+
+            /*TODO: captura el ultimo id donde hayamos ejecutado en el insert lo que implica que captura el id del ultimo registro realizado*/
+            $sql1 = "SELECT last_insert_id() as 'usu_id'";
+            $sql1 = $conectar->prepare($sql1);
+
+            return $sql1->fetchAll();
         }
 
         /*TODO: función para obtener un correo específico de acuerdo al parámetro de busqueda */
@@ -43,6 +49,21 @@
              $sql->execute();
              return $sql->fetchAll();
         }
+
+         /*TODO: función para obtener un id específico de acuerdo al parámetro de busqueda */
+         public function get_usuario_id($usu_id){      
+            $conectar = parent::conexion();
+            parent::set_names();
+            
+            $sql = "SELECT * FROM tm_usuario
+                    WHERE usu_id = ?";
+
+            $sql = $conectar->prepare($sql);
+            $sql->bindValue(1,$usu_id);
+
+            $sql->execute();
+            return $sql->fetchAll();
+       }
 
     }
 
