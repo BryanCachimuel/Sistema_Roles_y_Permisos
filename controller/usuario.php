@@ -39,7 +39,14 @@
                 echo "0";
             }
            
-            break;
+                break;
+
+                /*TODO: control de activación de un registrado y confirmado mediante su correo electrónico */
+            case "activar":
+                $id = $_POST["usu_id"];
+
+                $usuario->activar_usuario($id);
+                break;
 
     }
 
