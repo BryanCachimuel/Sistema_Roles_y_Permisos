@@ -3,8 +3,17 @@
     /*TODO: Clase Usuario que extiende de la clase Conectar que se encuentra en el directorio condif/conexion.php */
     class Usuario extends Conectar {
 
+         /*TODO: proceso de encriptación del id del usuario registrado */
+        private $key="MesaDePartesRixlerC";
+        private $cipher="aes-256-cbc";
+
         /*TODO: función para registrar un nuevo usuario en la bdd */
         public function registrar_usuario($usu_nomape,$usu_correo,$usu_pass){
+
+           /* proceos para encriptar la contraseña */
+           $iv = openssl_random_pseudo_bytes(openssl_cipher_iv_length($this->cipher));
+           $cifrado = openssl_encrypt($usu_pass, $this->cipher, $this->key, OPENSSL_RAW_DATA, $iv);
+           $textoCifrado = base64_encode($iv . $cifrado);
 
             /*TODO: Obtener la conexión a la bdd utilizando la función de la clase padre(Conectar) */
             $conectar = parent::conexion();
@@ -23,7 +32,7 @@
             /*TODO: Vincular los valores a los parámetros de la consulta */
             $sql->bindValue(1,$usu_nomape);
             $sql->bindValue(2,$usu_correo);
-            $sql->bindValue(3,$usu_pass);
+            $sql->bindValue(3,$textoCifrado);
 
             /*TODO: Ejecutar la consulta SQL */
             $sql->execute();
@@ -66,7 +75,15 @@
        }
 
        /*TODO: función para activar un usuario registrado y confirmado mediante correo electrónico */
-       public function activar_usuario($usu_id){      
+       public function activar_usuario($usu_id){    
+           
+           /* cifrado del usu_id */
+           $iv_dec = substr(base64_decode($usu_id), 0, openssl_cipher_iv_length($this->cipher));
+           $cifradoSinIV = substr(base64_decode($usu_id), 0, openssl_cipher_iv_length($this->cipher));
+           
+           /* decifrado del usu_id */
+           $textoDecifrado = openssl_decrypt($cifradoSinIV, $this->cipher, $this->key, OPENSSL_RAW_DATA, $iv_dec);
+
             $conectar = parent::conexion();
             parent::set_names();
         
@@ -76,7 +93,7 @@
                    WHERE usu_id = ?";
 
             $sql = $conectar->prepare($sql);
-            $sql->bindValue(1,$usu_id);
+            $sql->bindValue(1,$textoDecifrado);
 
             $sql->execute();
         }
