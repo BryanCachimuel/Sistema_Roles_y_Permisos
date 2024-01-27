@@ -69,6 +69,44 @@ class Email extends PHPMailer{
             return false;
         }
     }
+
+    public function recuperar($usu_correo){
+
+        $conexion = new Conectar();
+
+        $usuario = new Usuario();
+        $datos = $usuario->get_usuario_correo($usu_correo);
+
+        $this->isSMTP();
+        $this->Host = 'smtp-relay.brevo.com'; 
+        $this->Port = 587;  
+        $this->SMTPAuth = true;
+        $this->SMTPSecure = 'tls';
+
+        $this->Username = $this->gCorreo;
+        $this->Password = $this->gContrasenia;
+        $this->setFrom($this->gCorreo,"Recuperar Contraseña Mesa de Partes del Sistema");
+        
+        $this->CharSet = 'UTF8';
+        $this->addAddress($datos[0]["usu_correo"]); 
+        $this->isHTML(true); 
+        $this->Subject = "Mesa de Partes";
+
+        $url = $conexion->ruta() . "view/confirmar/?id=";
+
+        $cuerpo = file_get_contents("../assets/email/registrar.html");
+        $cuerpo = str_replace("xlinkcorreourl",$url,$cuerpo); 
+
+        $this->Body = $cuerpo;
+        $this->AltBody = strip_tags("Recuperar Contraseña");
+
+        try {
+            $this->send();
+            return true;
+        } catch (Exception $e) {
+            return false;
+        }
+    }
 }
 
 ?>
