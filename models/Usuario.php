@@ -65,6 +65,22 @@
             return $sql->fetchAll();
        }
 
+       /*TODO: función para activar un usuario registrado y confirmado mediante correo electrónico */
+       public function activar_usuario($usu_id){      
+            $conectar = parent::conexion();
+            parent::set_names();
+        
+            $sql = "UPDATE tm_usuario
+                   SET estado=1,
+                       fecha_activacion=NOW()
+                   WHERE usu_id = ?";
+
+            $sql = $conectar->prepare($sql);
+            $sql->bindValue(1,$usu_id);
+
+            $sql->execute();
+        }
+
     }
 
 ?>
