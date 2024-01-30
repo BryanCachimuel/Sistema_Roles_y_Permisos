@@ -9,6 +9,9 @@
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description">
     <meta content="Themesbrand" name="author">
 
+    <!-- Sweet Alert-->
+    <link href="../../assets/css/sweetalert2.min.css" rel="stylesheet" type="text/css">
+
     <!-- preloader css -->
     <link rel="stylesheet" href="../../assets/css/preloader.min.css" type="text/css">
 
@@ -42,10 +45,10 @@
                                     <form class="custom-form mt-4">
                                         <div class="mb-3">
                                             <label class="form-label">Correo Electrónico</label>
-                                            <input type="email" class="form-control" id="usu_correo" id="usu_name" placeholder="Ingrese Correo Electrónico">
+                                            <input type="email" class="form-control" id="usu_correo" name="usu_correo" placeholder="Ingrese Correo Electrónico">
                                         </div>
                                         <div class="mb-3 mt-4">
-                                            <button class="btn btn-primary w-100 waves-effect waves-light" type="submit">Recuperar</button>
+                                            <a class="btn btn-primary w-100 waves-effect waves-light" id="btnrecuperar">Recuperar</a>
                                         </div>
                                     </form>
 
@@ -162,6 +165,9 @@
     <script src="../../assets/js/feather.min.js"></script>
     <!-- pace js -->
     <script src="../../assets/js/pace.min.js"></script>
+
+    <!-- Sweet Alerts js -->
+    <script src="../../assets/js/sweetalert2.min.js"></script>
 
     <script type="text/javascript" src="recuperar.js"></script>
 </body>
