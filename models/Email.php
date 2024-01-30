@@ -97,6 +97,9 @@ class Email extends PHPMailer{
         /*TODO: generar la cadena alfanumérica */
         $xpassusu = $this->generarXPassUsu();
 
+        /*TODO: llamando a la función recuperar usuario*/
+        $usuario->recuperar_usuario($usu_correo,$xpassusu);
+
         $cuerpo = file_get_contents("../assets/email/recuperar.html");
         $cuerpo = str_replace("xpassusu",$xpassusu,$cuerpo); 
         $cuerpo = str_replace("xlinksistema",$url,$cuerpo); 
