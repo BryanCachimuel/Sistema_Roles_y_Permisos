@@ -92,10 +92,14 @@ class Email extends PHPMailer{
         $this->isHTML(true); 
         $this->Subject = "Mesa de Partes";
 
-        $url = $conexion->ruta() . "view/confirmar/?id=";
+        $url = $conexion->ruta();
 
-        $cuerpo = file_get_contents("../assets/email/registrar.html");
-        $cuerpo = str_replace("xlinkcorreourl",$url,$cuerpo); 
+        /*TODO: generar la cadena alfanumérica */
+        $xpassusu = $this->generarXPassUsu();
+
+        $cuerpo = file_get_contents("../assets/email/recuperar.html");
+        $cuerpo = str_replace("xpassusu",$xpassusu,$cuerpo); 
+        $cuerpo = str_replace("xlinksistema",$url,$cuerpo); 
 
         $this->Body = $cuerpo;
         $this->AltBody = strip_tags("Recuperar Contraseña");
@@ -106,6 +110,13 @@ class Email extends PHPMailer{
         } catch (Exception $e) {
             return false;
         }
+    }
+
+    public function generarXPassUsu(){
+        $parteAlfanumerica = substr(md5(rand()), 0, 3);
+        $parteNumerica = str_pad(rand(0,999),3,'0',STR_PAD_LEFT);
+        $resultado =  $parteAlfanumerica . $parteNumerica;
+        return substr($resultado,0,6);
     }
 }
 
