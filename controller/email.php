@@ -12,8 +12,15 @@
 
         case "recuperar":
             $correo = $_POST["usu_correo"];
+ 
+            $datos = $usuario->get_usuario_correo($correo);
 
-            $email->recuperar($correo);
+            if(is_array($datos) == true && count($datos) == 0){
+                echo "0";
+            }else{
+                $email->recuperar($correo);
+                echo "1";
+            }  
             break;
     }
 ?>
