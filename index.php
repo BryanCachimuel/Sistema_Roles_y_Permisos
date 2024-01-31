@@ -1,3 +1,12 @@
+<?php
+    require_once("config/conexion.php");
+    if(isset($_POST["enviar"]) && $_POST["enviar"] == "si"){
+        require_once("models/Usuario.php");
+        $usuario = new Usuario();
+        $usuario->login();
+    }
+?>
+
 <html lang="es">
 
 <head>
@@ -33,10 +42,47 @@
                                         <h5 class="mb-0">Ingrese sus Credenciales</h5>
     
                                     </div>
-                                    <form class="custom-form mt-4 pt-2">
+                                    <form class="custom-form mt-4 pt-2" action="" method="post">
+                                        
+                                        <?php
+                                            if(isset($_GET["m"])){
+                                                switch($_GET["m"]){
+                                                    case "1":
+                                                        ?>
+                                                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                                                <i class="mdi mdi-block-helper me-2"></i>
+                                                                    Correo Electronico no encontrado
+                                                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                                            </div>
+                                                        <?php
+                                                        break;
+
+                                                    case "2":
+                                                        ?>
+                                                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                                                <i class="mdi mdi-block-helper me-2"></i>
+                                                                    Campos Vacios
+                                                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                                            </div>
+                                                        <?php
+                                                         break;
+
+                                                    case "3":
+                                                        ?>
+                                                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                                                <i class="mdi mdi-block-helper me-2"></i>
+                                                                    Contraseña Incorrecta
+                                                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                                            </div>
+                                                        <?php
+                                                        break;
+                                                }
+                                            }
+                                        ?>
+
                                         <div class="mb-3">
                                             <label class="form-label">Correo Electrónico</label>
-                                            <input type="email" class="form-control" id="use_correo" placeholder="Ingrese su Correo">
+                                            <input type="email" class="form-control" id="use_correo" name="usu_correo" placeholder="Ingrese su Correo" required>
                                         </div>
                                         <div class="mb-3">
                                             <div class="d-flex align-items-start">
@@ -45,13 +91,13 @@
                                                 </div>
                                                 <div class="flex-shrink-0">
                                                     <div class="">
-                                                        <a href="auth-recoverpw-1.html" class="text-muted">Olvidaste tu Contraseña?</a>
+                                                        <a href="view/recuperar/index.php" class="text-muted">Olvidaste tu Contraseña?</a>
                                                     </div>
                                                 </div>
                                             </div>
 
                                             <div class="input-group auth-pass-inputgroup">
-                                                <input type="password" class="form-control" placeholder="Ingrese su Contraseña" aria-label="Password" aria-describedby="password-addon">
+                                                <input type="password" class="form-control" id="usu_pass" name="usu_pass" placeholder="Ingrese su Contraseña" aria-label="Password" aria-describedby="password-addon" required>
                                                 <button class="btn btn-light shadow-none ms-0" type="button" id="use_password"><i class="mdi mdi-eye-outline"></i></button>
                                             </div>
                                         </div>
@@ -67,6 +113,7 @@
 
                                         </div>
                                         <div class="mb-3">
+                                            <input type="hidden" name="enviar" value="si">
                                             <button class="btn btn-primary w-100 waves-effect waves-light" type="submit">Acceder</button>
                                         </div>
                                     </form>
@@ -203,7 +250,7 @@
     <script src="assets/js/bootstrap.bundle.min-1.js"></script>
     <script src="assets/js/metisMenu.min-1.js"></script>
     <script src="assets/js/simplebar.min-1.js"></script>
-    <script src="assets/js/waves.min-1.js"></script>
+    <script src="assets/js/waves.min.js"></script>
     <script src="assets/js/feather.min-1.js"></script>
     <!-- pace js -->
     <script src="assets/js/pace.min-1.js"></script>
