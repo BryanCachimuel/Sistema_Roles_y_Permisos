@@ -7,6 +7,50 @@
         private $key="MesaDePartesRixlerC";
         private $cipher="aes-256-cbc";
 
+        public function login(){
+            $conectar = parent::conexion();
+            parent::set_names();
+
+            if(isset($_POST["enviar"])){
+                $correo = $_POST["usu_correo"];
+                $pass = $_POST["usu_pass"];
+
+                if(empty($correo) && empty($pass)){
+                    header("Location:".conectar::ruta()."index.php?m=2");
+                    exit();
+                }else{
+                    $sql = "SELECT * FROM tm_usuario WHERE usu_correo=?";
+                    $sql = $conectar->prepare($sql);
+                    $sql->bindValue(1,$correo);
+                    $sql->execute();
+                    $resultado = $sql->fetch();
+                    if($resultado){
+                        $textoCifrado = $resultado["usu_pass"];
+
+                        $iv_dec = substr(base64_decode($textoCifrado), 0, openssl_cipher_iv_length($this->cipher));
+                        $cifradoSinIV = substr(base64_decode($textoCifrado), 0, openssl_cipher_iv_length($this->cipher));
+                        $textoDecifrado = openssl_decrypt($cifradoSinIV, $this->cipher, $this->key, OPENSSL_RAW_DATA, $iv_dec);
+                    
+                        if($textoCifrado == $pass){
+                            if(is_array($resultado) && count($resultado) > 0){
+                                $_SESSION["usu_id"] = $resultado["usu_id"];
+                                $_SESSION["usu_nomape"] = $resultado["usu_nomape"];
+                                $_SESSION["usu_correo"] = $resultado["usu_correo"];
+                                header("Location:".Conectar::ruta()."view/Home/");
+                                exit();
+                            }
+                        }else{
+                            header("Location:".Conectar::ruta()."index.php?m=3");
+                            exit();
+                        }
+                    }else{
+                        header("Location:".Conectar::ruta()."index.php?m=1");
+                        exit();
+                    }
+                }
+            }
+        }
+
         /*TODO: función para registrar un nuevo usuario en la bdd */
         public function registrar_usuario($usu_nomape,$usu_correo,$usu_pass){
 
