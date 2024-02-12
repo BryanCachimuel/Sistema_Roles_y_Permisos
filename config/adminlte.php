@@ -318,18 +318,24 @@ return [
             'label'       => 4,
             'label_color' => 'success',
         ],
-        ['header' => 'account_settings'],
+        ['header' => 'Cliente'],
         [
-            'text' => 'profile',
-            'url'  => 'profile',
+            'text' => 'Lista de Clientes',
+            'route'  => 'cliente.index',
             'icon' => 'fas fa-fw fa-user',
         ],
         [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
+            'text' => 'Nuevo Cliente',
+            'route'  => 'cliente.create',
+            'icon' => 'fas fa-fw fa-user-plus',
         ],
         [
+            'text' => 'Perfil',
+            'url'  => 'profile',
+            'icon' => 'fas fa-fw fa-users',
+        ],
+
+        /*[
             'text'    => 'multilevel',
             'icon'    => 'fas fa-fw fa-share',
             'submenu' => [
@@ -366,7 +372,8 @@ return [
                     'url'  => '#',
                 ],
             ],
-        ],
+        ],*/
+
         ['header' => 'labels'],
         [
             'text'       => 'important',
