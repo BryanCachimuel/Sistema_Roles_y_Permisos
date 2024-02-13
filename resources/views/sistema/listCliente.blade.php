@@ -25,7 +25,7 @@
                 $btnEdit = '<button class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit">
                                 <i class="fa fa-lg fa-fw fa-pen"></i>
                             </button>';
-                $btnDelete = '<button class="btn btn-xs btn-default text-danger mx-1 shadow" title="Delete">
+                $btnDelete = '<button type="submit" class="btn btn-xs btn-default text-danger mx-1 shadow" title="Delete">
                                 <i class="fa fa-lg fa-fw fa-trash"></i>
                              </button>';
                 $btnDetails = '<button class="btn btn-xs btn-default text-teal mx-1 shadow" title="Details">
@@ -50,7 +50,14 @@
                         <td>{{$cliente->telefono}}</td>
                         <td>{{$cliente->direccion}}</td>
                         <td>{{$cliente->estado}}</td>
-                        <td>{!! $btnEdit !!} {!! $btnDelete !!}</td>
+                        <td>
+                            {!! $btnEdit !!} 
+                            <form style="display: inline" action="{{route('cliente.destroy',$cliente)}}" method="post" class="formEliminar">
+                                @csrf
+                                @method('delete')
+                                {!! $btnDelete !!}
+                            </form>  
+                        </td>
                     </tr>
                 @endforeach
             </x-adminlte-datatable>
@@ -65,6 +72,23 @@
 
 @section('js')
     <script>
-        console.log('Hi')
+        $(document).ready(function(){
+            $('.formEliminar').submit(function(e){
+                e.preventDefault();
+                Swal.fire({
+                    title: "Está seguro?",
+                    text: "Se va a eliminar un registro!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Yes, delete it!"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        this.submit();
+                    }
+                });
+            });
+        });
     </script>
 @stop
