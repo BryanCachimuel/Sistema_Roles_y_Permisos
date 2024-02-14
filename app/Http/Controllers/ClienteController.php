@@ -63,8 +63,9 @@ class ClienteController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
-    {
-        //
+    {   
+        $cliente = Client::find($id);
+        return view('sistema.editCliente',compact('cliente'));
     }
 
     /**
