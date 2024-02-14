@@ -22,9 +22,7 @@
                     ['label' => 'Actions', 'no-export' => true, 'width' => 10]
                 ];
 
-                $btnEdit = '<button class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit">
-                                <i class="fa fa-lg fa-fw fa-pen"></i>
-                            </button>';
+                $btnEdit = '';
                 $btnDelete = '<button type="submit" class="btn btn-xs btn-default text-danger mx-1 shadow" title="Delete">
                                 <i class="fa fa-lg fa-fw fa-trash"></i>
                              </button>';
@@ -51,7 +49,10 @@
                         <td>{{$cliente->direccion}}</td>
                         <td>{{$cliente->estado}}</td>
                         <td>
-                            {!! $btnEdit !!} 
+                            <a href="{{route('cliente.edit',$cliente)}}" class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit">
+                                <i class="fa fa-lg fa-fw fa-pen"></i>
+                            </a>
+
                             <form style="display: inline" action="{{route('cliente.destroy',$cliente)}}" method="post" class="formEliminar">
                                 @csrf
                                 @method('delete')
