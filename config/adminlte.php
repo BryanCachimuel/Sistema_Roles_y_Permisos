@@ -311,12 +311,16 @@ return [
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
+        ['header' => 'USUARIOS'],
         [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
-            'label_color' => 'success',
+            'text'        => 'Roles',
+            'route'       => 'roles.index',
+            'icon'        => 'fas fa-users-cog',
+        ],
+        [
+            'text'        => 'Permisos',
+            'route'         => 'permisos.index',
+            'icon'        => 'fas fa-user-cog',
         ],
         ['header' => 'Cliente'],
         [
