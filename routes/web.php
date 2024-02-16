@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\PermisoController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,4 +34,6 @@ Route::middleware([
     
     /* con esta ruta se va a poder hacer uso de todos los métodos del controlador Cliente */
     Route::resource('/client', ClienteController::class)->names('cliente');
+    Route::resource('/roles', RoleController::class)->names('roles');
+    Route::resource('/permisos', PermisoController::class)->names('permisos');
 });
