@@ -19,7 +19,7 @@
                     'TELEFONO',
                     'DIRECCION',
                     'ESTADO',
-                    ['label' => 'Actions', 'no-export' => true, 'width' => 10]
+                    ['label' => 'ACCIONES', 'no-export' => true, 'width' => 10]
                 ];
 
                 $btnEdit = '';
