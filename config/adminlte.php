@@ -319,8 +319,13 @@ return [
         ],
         [
             'text'        => 'Permisos',
-            'route'         => 'permisos.index',
+            'route'       => 'permisos.index',
             'icon'        => 'fas fa-user-cog',
+        ],
+        [
+            'text'        => 'Usuarios',
+            'route'       => 'asignar.index',
+            'icon'        => 'fas fa-user-friends',  
         ],
         ['header' => 'Cliente'],
         [
