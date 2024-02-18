@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AsignarController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\PermisoController;
 use App\Http\Controllers\RoleController;
@@ -36,4 +37,5 @@ Route::middleware([
     Route::resource('/client', ClienteController::class)->names('cliente');
     Route::resource('/roles', RoleController::class)->names('roles');
     Route::resource('/permisos', PermisoController::class)->names('permisos');
+    Route::resource('/usuarios', AsignarController::class)->names('asignar');
 });
