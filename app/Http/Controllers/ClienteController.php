@@ -19,6 +19,15 @@ class ClienteController extends Controller
     /**
      * Show the form for creating a new resource.
      */
+
+    public function __construct(){
+        /* middleware genera unas instancias de acción antes o después de invocar a mi ruta para este caso se va a solicitar lo siguiente
+           de acuerdo a la directiva can se da el permiso al administrador Crear Cliente y con eso solo el administrador pueda crear un cliente
+        */
+        $this->middleware('can: Crear Cliente')->only('create');
+        $this->middleware('can: Eliminar Cliente')->only('destroy');
+    } 
+
     public function create()
     {
         return view('sistema.addCliente');
