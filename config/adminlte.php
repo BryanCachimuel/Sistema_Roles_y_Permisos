@@ -312,25 +312,25 @@ return [
             'can'  => 'manage-blog',
         ],
         ['header' => 'USUARIOS',
-         'can'    => 'Administrador Configuracion'
+         /*'can'    => 'Administrador'*/
         ],
         [
             'text'        => 'Roles',
             'route'       => 'roles.index',
             'icon'        => 'fas fa-users-cog',
-            'can'         => 'Administrador Configuracion'
+            /*'can'         => 'Administrador'*/
         ],
         [
             'text'        => 'Permisos',
             'route'       => 'permisos.index',
             'icon'        => 'fas fa-user-cog',
-            'can'         => 'Administrador Configuracion'
+            /*'can'         => 'Administrador'*/
         ],
         [
             'text'        => 'Usuarios',
             'route'       => 'asignar.index',
             'icon'        => 'fas fa-user-friends',  
-            'can'         => 'Administrador Configuracion'
+            /*'can'         => 'Administrador'*/
         ],
         ['header' => 'Cliente'],
         [
@@ -389,7 +389,7 @@ return [
             ],
         ],*/
 
-        ['header' => 'labels'],
+        /*['header' => 'labels'],
         [
             'text'       => 'important',
             'icon_color' => 'red',
@@ -404,7 +404,7 @@ return [
             'text'       => 'information',
             'icon_color' => 'cyan',
             'url'        => '#',
-        ],
+        ],*/
     ],
 
     /*
