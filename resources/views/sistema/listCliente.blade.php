@@ -8,13 +8,13 @@
 
 @section('content')
     <div class="card">
-        @role('Administrador')
+        @can('Crear Cliente')
             <div class="card-head">
                 <a href="{{route('cliente.create')}}" class="btn btn-primary float-right mt-2 mr-2">
                     <i class="fas fa-plus-circle"></i> Nuevo Cliente
                 </a>
             </div>
-        @endrole
+        @endcan
         <div class="card-body">
 
             @php
@@ -60,13 +60,13 @@
                                 <i class="fa fa-lg fa-fw fa-pen"></i>
                             </a>
 
-                            @role('Administrador')
+                            @can('Eliminar Cliente')
                                 <form style="display: inline" action="{{route('cliente.destroy',$cliente)}}" method="post" class="formEliminar">
                                     @csrf
                                     @method('delete')
                                     {!! $btnDelete !!}
                                 </form>  
-                            @endrole
+                            @endcan
                         </td>
                     </tr>
                 @endforeach
