@@ -311,21 +311,26 @@ return [
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
-        ['header' => 'USUARIOS'],
+        ['header' => 'USUARIOS',
+         'can'    => 'Administrador Configuracion'
+        ],
         [
             'text'        => 'Roles',
             'route'       => 'roles.index',
             'icon'        => 'fas fa-users-cog',
+            'can'         => 'Administrador Configuracion'
         ],
         [
             'text'        => 'Permisos',
             'route'       => 'permisos.index',
             'icon'        => 'fas fa-user-cog',
+            'can'         => 'Administrador Configuracion'
         ],
         [
             'text'        => 'Usuarios',
             'route'       => 'asignar.index',
             'icon'        => 'fas fa-user-friends',  
+            'can'         => 'Administrador Configuracion'
         ],
         ['header' => 'Cliente'],
         [
@@ -337,6 +342,7 @@ return [
             'text' => 'Nuevo Cliente',
             'route'  => 'cliente.create',
             'icon' => 'fas fa-fw fa-user-plus',
+            'can' => 'Crear Cliente'
         ],
         [
             'text' => 'Perfil',
