@@ -64,4 +64,9 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    // Relación uno a muchos 
+    public function messages() {
+        return $this->hasMany(Message::class);
+    }
 }
