@@ -9,6 +9,11 @@ use Livewire\Component;
 class ManageMessages extends Component
 {   
     public $content; 
+    public $mensajes;
+
+     public function mount() {
+        $this->getMensajes();
+    } 
 
     public function save() {
        $this->validate([
@@ -21,6 +26,12 @@ class ManageMessages extends Component
        ]);
 
        $this->content = '';
+
+       $this->getMensajes();
+    }
+
+    public function getMensajes() {
+        $this->mensajes = Message::with('user')->latest()->get();
     }
 
     public function render()
