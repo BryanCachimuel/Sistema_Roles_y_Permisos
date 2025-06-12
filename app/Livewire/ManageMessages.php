@@ -8,19 +8,19 @@ use Livewire\Component;
 
 class ManageMessages extends Component
 {   
-    public $content = ''; 
+    public $content; 
 
     public function save() {
-        $this->validate([
-            'content' => 'required|min:5'
-        ]);
+       $this->validate([
+        'content'=>'required|min:5'
+       ]);
 
-        Message::create([
-            'contend' => $this->content,
-            'user_id' => Auth::user()->id
-        ]);
+       Message::create([
+        'content'=>$this->content,
+        'user_id'=> Auth::user()->id
+       ]);
 
-        $this->content = '';
+       $this->content = '';
     }
 
     public function render()
