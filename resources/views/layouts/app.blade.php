@@ -42,15 +42,6 @@
 
         @livewireScripts
 
-        <script>
-
-            window.onload = function() {
-                Echo.channel('chat')
-                .listen('MessageSend', (e) => {
-                    console.log('Mensaje desde la configuración del canal público');
-                });
-            }
-
-        </script>
+       
     </body>
 </html>
