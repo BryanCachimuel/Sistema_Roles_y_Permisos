@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Events\MessageSend;
 use App\Models\Message;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -28,6 +29,8 @@ class ManageMessages extends Component
        $this->content = '';
 
        $this->getMensajes();
+
+       MessageSend::dispatch();
     }
 
     public function getMensajes() {
