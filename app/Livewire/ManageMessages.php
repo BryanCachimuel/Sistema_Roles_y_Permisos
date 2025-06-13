@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Events\MessageSend;
 use App\Models\Message;
 use Illuminate\Support\Facades\Auth;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class ManageMessages extends Component
@@ -28,11 +29,12 @@ class ManageMessages extends Component
 
        $this->content = '';
 
-       $this->getMensajes();
+       //$this->getMensajes();
 
        MessageSend::dispatch();
     }
 
+    #[On('echo:chat,MessageSend')]
     public function getMensajes() {
         $this->mensajes = Message::with('user')->latest()->get();
     }
